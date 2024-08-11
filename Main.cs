@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -39,7 +38,29 @@ namespace Worms2_IPXAddressBook
             public static System.Media.SoundPlayer sndNew = new System.Media.SoundPlayer(@"Data\Wav\Effects\SheepBaa.wav");
             public static System.Media.SoundPlayer sndSelect = new System.Media.SoundPlayer(@"Data\Wav\Effects\CrateImpact.wav");
             public static System.Media.SoundPlayer sndSave = new System.Media.SoundPlayer(@"Data\Wav\Speech\yessir.wav");
+        }
 
+        public static class lang
+        {
+            public static string PlayOnline = "Play Online";
+            public static string PlayLAN = "Play via LAN or VPN";
+            public static string SelectServer = "Select Server";
+            public static string Restart = "Please restart the game for changes to take effect.";
+            public static string Port = "Port"; //9-143
+            public static string AddressBook = "Address book"; //14-208
+            public static string ServerList = "Server List"; //14-209
+            public static string New = "New"; //14-210
+            public static string Delete = "Delete"; //14-211
+            public static string Cancel = "Cancel"; //14-212
+            public static string Exit = "Exit"; //14-213
+            public static string Name = "Name"; //14-214
+            public static string Server = "Server"; //14-216
+            public static string Address = "Address"; //14-218
+            public static string PortNumber = "Port number"; //14-219
+            public static string Done = "Done"; //14-220
+            public static string Update = "Update"; //14-221
+            public static string OK = "OK"; //47-743
+            public static string AreYouSure = "Are you sure?"; //134-2140
         }
 
         private void listAdd(string[] entry)
@@ -105,6 +126,276 @@ namespace Worms2_IPXAddressBook
         }
         private void Main_Load(object sender, EventArgs e)
         {
+            //Check Language
+            string langFile = "language.txt";
+            string[] langArr = { "de", "en", "es", "es-419", "fr", "it", "nl", "pl", "pt", "pt-br", "ru", "sv" };
+            string langVal;
+            if (File.Exists(langFile)) {
+                langVal = File.ReadAllText(langFile).Trim();
+                if (!Array.Exists(langArr, element => element == langVal)) {
+                    langVal = "en";
+                }
+            }
+            else {
+                langVal = "en";
+            }
+           
+            switch (langVal) {
+                case "de":
+                    lang.PlayOnline = "Online spielen"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Server auswählen";
+                    lang.Restart = "Bitte starten Sie das Spiel neu, damit die Änderungen wirksam werden.";
+                    lang.Port = "Anschluß"; //9-143
+                    lang.AddressBook = "Adreßbuch"; //14-208
+                    lang.ServerList = "Namen"; //14-209
+                    lang.New = "Neu"; //14-210
+                    lang.Delete = "Löschen"; //14-211
+                    lang.Cancel = "Abbrechen"; //14-212
+                    lang.Exit = "Beenden"; //14-213
+                    lang.Name = "Name"; //14-214
+                    lang.Server = "Server"; //14-216
+                    lang.Address = "Adresse"; //14-218
+                    lang.PortNumber = "Anschluß-Nummer"; //14-219
+                    lang.Done = "Fertig"; //14-220
+                    lang.Update = "Aktualisieren"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Bist Du sicher?"; //134-2140
+                    break;
+                case "es":
+                    lang.PlayOnline = "Jugar en línea"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Seleccionar servidor";
+                    lang.Restart = "Reinicia el juego para que los cambios surtan efecto.";
+                    lang.Port = "Puerto"; //9-143
+                    lang.AddressBook = "Libreta de Direcciones"; //14-208
+                    lang.ServerList = "Nombres"; //14-209
+                    lang.New = "Nuevo"; //14-210
+                    lang.Delete = "Eliminar"; //14-211
+                    lang.Cancel = "Anular"; //14-212
+                    lang.Exit = "Salir"; //14-213
+                    lang.Name = "Nombre"; //14-214
+                    lang.Server = "Servidor"; //14-216
+                    lang.Address = "Dirección"; //14-218
+                    lang.PortNumber = "N°Puerto"; //14-219
+                    lang.Done = "Terminado"; //14-220
+                    lang.Update = "Actualiación"; //14-221
+                    lang.OK = "Aceptar"; //47-743
+                    lang.AreYouSure = "¿Seguro?"; //134-2140
+                    break;
+                case "es-419":
+                    lang.PlayOnline = "Jugar en línea"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Seleccionar servidor";
+                    lang.Restart = "Por favor, reinicia el juego para aplicar los cambios.";
+                    lang.Port = "Puerto"; //9-143
+                    lang.AddressBook = "Libreta de direcciones"; //14-208
+                    lang.ServerList = "Nombres"; //14-209
+                    lang.New = "Nuevo"; //14-210
+                    lang.Delete = "Borrar"; //14-211
+                    lang.Cancel = "Cancelar"; //14-212
+                    lang.Exit = "Salir"; //14-213
+                    lang.Name = "Nombre"; //14-214
+                    lang.Server = "Servidor"; //14-216
+                    lang.Address = "Dirección"; //14-218
+                    lang.PortNumber = "Número de puerto"; //14-219
+                    lang.Done = "Hecho"; //14-220
+                    lang.Update = "Actualización"; //14-221
+                    lang.OK = "Aceptar"; //47-743
+                    lang.AreYouSure = "¿Estás seguro?"; //134-2140
+                    break;
+                case "fr":
+                    lang.PlayOnline = "Jouer en ligne"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Sélectionner le serveur"; //Confirm
+                    lang.Restart = "Veuillez redémarrer le jeu pour que les modifications soient prises en compte.";
+                    lang.Port = "Port"; //9-143
+                    lang.AddressBook = "Carnet d'adresses"; //14-208
+                    lang.ServerList = "Noms"; //14-209
+                    lang.New = "Nouveau"; //14-210
+                    lang.Delete = "Supprimer"; //14-211
+                    lang.Cancel = "Annuler"; //14-212
+                    lang.Exit = "Sortir"; //14-213
+                    lang.Name = "Nom"; //14-214
+                    lang.Server = "Serveur"; //14-216
+                    lang.Address = "Adresse"; //14-218
+                    lang.PortNumber = "Numéro du port"; //14-219
+                    lang.Done = "Fini"; //14-220
+                    lang.Update = "Mise à jour"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Etes-vous sûr?"; //134-2140
+                    break;
+                case "it":
+                    lang.PlayOnline = "Gioca Online"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Selezionare il server";
+                    lang.Restart = "Per rendere effettive le modifiche, riavviare il gioco.";
+                    lang.Port = "Porta"; //9-143
+                    lang.AddressBook = "Agenda"; //14-208
+                    lang.ServerList = "Nomi"; //14-209
+                    lang.New = "Nuovo"; //14-210
+                    lang.Delete = "Cancella"; //14-211
+                    lang.Cancel = "Annulla"; //14-212
+                    lang.Exit = "Esci"; //14-213
+                    lang.Name = "Nome"; //14-214
+                    lang.Server = "Server"; //14-216
+                    lang.Address = "Indirizzo"; //14-218
+                    lang.PortNumber = "Numero porta"; //14-219
+                    lang.Done = "Fatto"; //14-220
+                    lang.Update = "Aggiorna"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Sei sicuro?"; //134-2140
+                    break;
+                case "nl":
+                    lang.PlayOnline = "Speel online"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Selecteer server";
+                    lang.Restart = "Start het spel opnieuw op om de wijzigingen door te voeren.";
+                    lang.Port = "Poort"; //9-143
+                    lang.AddressBook = "Adresboek"; //14-208
+                    lang.ServerList = "Lista serwerów"; //14-209
+                    lang.New = "Nieuw"; //14-210
+                    lang.Delete = "Verwijder"; //14-211
+                    lang.Cancel = "Annuleren"; //14-212
+                    lang.Exit = "Terug"; //14-213
+                    lang.Name = "Naam"; //14-214
+                    lang.Server = "Server"; //14-216
+                    lang.Address = "adres"; //14-218
+                    lang.PortNumber = "Poort"; //14-219
+                    lang.Done = "Klaar"; //14-220
+                    lang.Update = "Bijwerken"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Weet je dit zeker?"; //134-2140
+                    break;
+                case "pl":
+                    //Credit: Dawid8
+                    lang.PlayOnline = "Graj Online"; //Play Online
+                    lang.PlayLAN = "Graj przez sieć lokalną lub VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Wybierz serwer";
+                    lang.Restart = "Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić grę.";
+                    lang.Port = "Port"; //9-143
+                    lang.AddressBook = "Książka adresowa"; //14-208
+                    lang.ServerList = "Nazwy"; //14-209
+                    lang.New = "Nowy"; //14-210
+                    lang.Delete = "Usuń"; //14-211
+                    lang.Cancel = "Wróć"; //14-212
+                    lang.Exit = "Wyjdź"; //14-213
+                    lang.Name = "Nazwa"; //14-214
+                    lang.Server = "Serwer"; //14-216
+                    lang.Address = "adres"; //14-218
+                    lang.PortNumber = "Numer portu"; //14-219
+                    lang.Done = "Gotowe"; //14-220
+                    lang.Update = "Uaktualnienie"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Na pewno?"; //134-2140
+                    break;
+                case "pt":
+                    //Credit: rubinho146
+                    lang.PlayOnline = "Jogar online"; //Play Online
+                    lang.PlayLAN = "Jogar via LAN ou VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Selecionar servidor";
+                    lang.Restart = "Reinicia o jogo para as alterações fazerem efeito.";
+                    lang.Port = "Porta"; //9-143
+                    lang.AddressBook = "Livro de endereços"; //14-208
+                    lang.ServerList = "Lista de servidores"; //14-209
+                    lang.New = "Novo"; //14-210
+                    lang.Delete = "Apagar"; //14-211
+                    lang.Cancel = "Cancelar"; //14-212
+                    lang.Exit = "Sair"; //14-213
+                    lang.Name = "Nome"; //14-214
+                    lang.Server = "Servidor"; //14-216
+                    lang.Address = "Endereço"; //14-218
+                    lang.PortNumber = "Número de porta"; //14-219
+                    lang.Done = "Terminado"; //14-220
+                    lang.Update = "Atualização"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Tens a certeza?"; //134-2140
+                    break;
+                case "pt-br":
+                    //Credit: rubinho146
+                    lang.PlayOnline = "Jogar online"; //Play Online
+                    lang.PlayLAN = "Jogar via LAN ou VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Selecionar servidor";
+                    lang.Restart = "Reinicie o jogo para as alterações surtirem efeito.";
+                    lang.Port = "Porta"; //9-143
+                    lang.AddressBook = "Caderno de endereços"; //14-208
+                    lang.ServerList = "Nomes"; //14-209
+                    lang.New = "Novo"; //14-210
+                    lang.Delete = "Remover"; //14-211
+                    lang.Cancel = "Cancelar"; //14-212
+                    lang.Exit = "Sair"; //14-213
+                    lang.Name = "Nome"; //14-214
+                    lang.Server = "Servidor"; //14-216
+                    lang.Address = "Endereço"; //14-218
+                    lang.PortNumber = "Número de Porta"; //14-219
+                    lang.Done = "Concluído"; //14-220
+                    lang.Update = "Atualização"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Tem certeza?"; //134-2140
+                    break;
+                case "ru":
+                    lang.PlayOnline = "Играть по сети"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Выберите сервер";
+                    lang.Restart = "Чтобы изменения вступили в силу, перезапустите игру.";
+                    lang.Port = "Порт"; //9-143
+                    lang.AddressBook = "Адресная книга"; //14-208
+                    lang.ServerList = "Имена"; //14-209
+                    lang.New = "Новое"; //14-210
+                    lang.Delete = "Удалить"; //14-211
+                    lang.Cancel = "Отмена"; //14-212
+                    lang.Exit = "Выйти"; //14-213
+                    lang.Name = "Имя"; //14-214
+                    lang.Server = "Сервер"; //14-216
+                    lang.Address = "адрес"; //14-218
+                    lang.PortNumber = "Номер порта"; //14-219
+                    lang.Done = "Готово"; //14-220
+                    lang.Update = "Обновить"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Уверены?"; //134-2140
+                    break;
+                case "sv":
+                    lang.PlayOnline = "Spela online"; //Play Online
+                    lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
+                    lang.SelectServer = "Välj server";
+                    lang.Restart = "Starta om spelet för att ändringarna ska träda i kraft.";
+                    lang.Port = "Dörr"; //9-143
+                    lang.AddressBook = "Adress bok"; //14-208
+                    lang.ServerList = "Namn"; //14-209
+                    lang.New = "Ny"; //14-210
+                    lang.Delete = "Ta bort"; //14-211
+                    lang.Cancel = "Avbryt"; //14-212
+                    lang.Exit = "Exit"; //14-213
+                    lang.Name = "Namn"; //14-214
+                    lang.Server = "Server"; //14-216
+                    lang.Address = "Adress"; //14-218
+                    lang.PortNumber = "Port nummer"; //14-219
+                    lang.Done = "Gjort"; //14-220
+                    lang.Update = "Uppdatera"; //14-221
+                    lang.OK = "OK"; //47-743
+                    lang.AreYouSure = "Är du säker?"; //134-2140
+                break;
+            }
+
+            //Apply language to controls
+            this.Text = lang.AddressBook;
+            rbOnline.Text = lang.PlayOnline;
+            rbLAN.Text = lang.PlayLAN;
+            gbServers.Text = lang.ServerList;
+            listServers.Columns[0].Text = lang.Server;
+            listServers.Columns[1].Text = lang.Address;
+            listServers.Columns[2].Text = lang.Port;
+            gbName.Text = lang.Name;
+            gbAddress.Text = lang.Address;
+            gbPort.Text = lang.PortNumber;
+            btnSet.Text = lang.SelectServer;
+            btnNew.Text = lang.New;
+            btnExit.Text = lang.Exit;
+            btnCancel.Text = lang.Exit;
+            btnDelete.Text = lang.Delete;
+            btnOK.Text = lang.OK;
+
+
             try {
                 var fileLines = File.ReadAllLines(global.fileServerlist);
                 Boolean serverSet = false;
@@ -157,7 +448,7 @@ namespace Worms2_IPXAddressBook
                     setTopServer();
                 }
             }
-            listServers.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+            listServers.Columns[2].Width = -2;
             listServers.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
 
             global.textBoxes = new TextBox[] { tbName, tbAddress, tbPort };
@@ -211,10 +502,10 @@ namespace Worms2_IPXAddressBook
         }
         private void listSelect()
         {
-            btnCancel.Text = "Exit";
+            btnCancel.Text = lang.Exit;
             btnCancel.Enabled = true;
             btnNew.Enabled = true;
-            btnOK.Text = "OK";
+            btnOK.Text = lang.OK;
             btnOK.Enabled = false;
             global.newEntry = false;
         }
@@ -262,9 +553,9 @@ namespace Worms2_IPXAddressBook
             listServers.SelectedIndices.Clear();
             global.newEntry = true;
             btnNew.Enabled = false;
-            btnCancel.Text = "Cancel";
+            btnCancel.Text = lang.Cancel;
             btnDelete.Enabled = false;
-            btnOK.Text = "Done";
+            btnOK.Text = lang.Done;
             btnOK.Enabled = false;
             foreach (TextBox tb in global.textBoxes) {
                 tb.Text = "";
@@ -275,7 +566,7 @@ namespace Worms2_IPXAddressBook
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (btnCancel.Text == "Cancel") {
+            if (btnCancel.Text == lang.Cancel) {
                 try { global.sndSelect.Play(); }
                 catch { }
                 if (global.newEntry) {
@@ -289,7 +580,7 @@ namespace Worms2_IPXAddressBook
                 }
                 listSelect();
             }
-            else if (btnCancel.Text == "Exit") {
+            else if (btnCancel.Text == lang.Exit) {
                 this.Close();
             }
         }
@@ -299,7 +590,7 @@ namespace Worms2_IPXAddressBook
             try { global.sndSelect.Play(); }
             catch { }
             if (listServers.SelectedItems.Count > 0) {
-                DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show(lang.AreYouSure, lang.Delete, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes) {
                     var selected = listServers.SelectedItems[0];
                     Boolean setNew = false;
@@ -331,10 +622,10 @@ namespace Worms2_IPXAddressBook
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (btnOK.Text == "Update") {
-                btnOK.Text = "OK";
+            if (btnOK.Text == lang.Update) {
+                btnOK.Text = lang.OK;
                 btnNew.Enabled = true;
-                btnCancel.Text = "Exit";
+                btnCancel.Text = lang.Exit;
                 btnOK.Enabled = false;
 
                 var selectedItem = listServers.SelectedItems[0];
@@ -344,7 +635,7 @@ namespace Worms2_IPXAddressBook
 
                 saveFile();
             }
-            else if (btnOK.Text == "Done") {
+            else if (btnOK.Text == lang.Done) {
                 listAdd(new string[] { tbName.Text, tbAddress.Text, tbPort.Text, "" });
                 saveFile();
                 foreach (TextBox tb in global.textBoxes) {
@@ -352,7 +643,7 @@ namespace Worms2_IPXAddressBook
                     tb.Enabled = false;
                 }
                 btnNew.Enabled = true;
-                btnCancel.Text = "Exit";
+                btnCancel.Text = lang.Exit;
                 btnCancel.Enabled = true;
                 btnOK.Enabled = false; 
             }
@@ -389,9 +680,9 @@ namespace Worms2_IPXAddressBook
                     btnOK.Enabled = false;
                 }
                 if (!global.newEntry) {
-                    btnOK.Text = "Update";
+                    btnOK.Text = lang.Update;
                 }
-                btnCancel.Text = "Cancel";
+                btnCancel.Text = lang.Cancel;
             }
         }
 
@@ -404,7 +695,7 @@ namespace Worms2_IPXAddressBook
             catch { }
             if (global.initPcap != global.selectedPcap || global.initAddress != global.selectedAddress || global.initPort != global.selectedPort) {
                 if (global.selectedAddress.Length > 0 && global.selectedPort.Length > 0) {
-                    MessageBox.Show("Please restart the game for changes to take affect.");
+                    MessageBox.Show(lang.Restart);
                 }
             }
         }
