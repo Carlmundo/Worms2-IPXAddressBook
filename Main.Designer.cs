@@ -87,13 +87,14 @@
             this.tblDesign.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblDesign.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblDesign.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblDesign.Size = new System.Drawing.Size(955, 571);
+            this.tblDesign.Size = new System.Drawing.Size(930, 559);
             this.tblDesign.TabIndex = 1;
             // 
             // btnExit
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.Location = new System.Drawing.Point(421, 48);
+            this.btnExit.AutoSize = true;
+            this.btnExit.Location = new System.Drawing.Point(430, 48);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(113, 53);
             this.btnExit.TabIndex = 8;
@@ -108,7 +109,7 @@
             this.flwMode.BackColor = System.Drawing.Color.Transparent;
             this.flwMode.Controls.Add(this.rbOnline);
             this.flwMode.Controls.Add(this.rbLAN);
-            this.flwMode.Location = new System.Drawing.Point(263, 3);
+            this.flwMode.Location = new System.Drawing.Point(272, 3);
             this.flwMode.Name = "flwMode";
             this.flwMode.Size = new System.Drawing.Size(428, 39);
             this.flwMode.TabIndex = 3;
@@ -158,11 +159,12 @@
             this.tblEdit.RowCount = 2;
             this.tblEdit.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblEdit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tblEdit.Size = new System.Drawing.Size(949, 188);
+            this.tblEdit.Size = new System.Drawing.Size(967, 183);
             this.tblEdit.TabIndex = 4;
             // 
             // tblEditFields
             // 
+            this.tblEditFields.AutoSize = true;
             this.tblEditFields.ColumnCount = 2;
             this.tblEditFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblEditFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -173,21 +175,20 @@
             this.tblEditFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblEditFields.Location = new System.Drawing.Point(9, 3);
             this.tblEditFields.Name = "tblEditFields";
-            this.tblEditFields.RowCount = 2;
+            this.tblEditFields.RowCount = 3;
             this.tblEditFields.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblEditFields.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblEditFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblEditFields.Size = new System.Drawing.Size(688, 181);
+            this.tblEditFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tblEditFields.Size = new System.Drawing.Size(688, 178);
             this.tblEditFields.TabIndex = 4;
             // 
             // gbPort
             // 
             this.gbPort.Controls.Add(this.tbPort);
-            this.gbPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPort.Location = new System.Drawing.Point(3, 88);
             this.gbPort.Name = "gbPort";
             this.gbPort.Padding = new System.Windows.Forms.Padding(9);
-            this.gbPort.Size = new System.Drawing.Size(338, 90);
+            this.gbPort.Size = new System.Drawing.Size(338, 79);
             this.gbPort.TabIndex = 6;
             this.gbPort.TabStop = false;
             this.gbPort.Text = "Port number";
@@ -250,12 +251,14 @@
             // 
             // btnSet
             // 
-            this.btnSet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSet.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSet.AutoSize = true;
             this.btnSet.BackColor = System.Drawing.SystemColors.Control;
             this.btnSet.Enabled = false;
-            this.btnSet.Location = new System.Drawing.Point(421, 106);
+            this.btnSet.Location = new System.Drawing.Point(421, 122);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(3, 3, 3, 9);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(190, 53);
+            this.btnSet.Size = new System.Drawing.Size(190, 39);
             this.btnSet.TabIndex = 1;
             this.btnSet.Text = "Select Server";
             this.btnSet.UseVisualStyleBackColor = false;
@@ -264,9 +267,10 @@
             // tblEditButtons
             // 
             this.tblEditButtons.AutoSize = true;
-            this.tblEditButtons.ColumnCount = 2;
+            this.tblEditButtons.ColumnCount = 3;
             this.tblEditButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblEditButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblEditButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tblEditButtons.Controls.Add(this.btnDelete, 1, 1);
             this.tblEditButtons.Controls.Add(this.btnCancel, 1, 0);
             this.tblEditButtons.Controls.Add(this.btnNew, 0, 0);
@@ -274,18 +278,19 @@
             this.tblEditButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblEditButtons.Location = new System.Drawing.Point(703, 3);
             this.tblEditButtons.Name = "tblEditButtons";
-            this.tblEditButtons.RowCount = 3;
+            this.tblEditButtons.RowCount = 4;
             this.tblEditButtons.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblEditButtons.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblEditButtons.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblEditButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblEditButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblEditButtons.Size = new System.Drawing.Size(238, 181);
+            this.tblEditButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tblEditButtons.Size = new System.Drawing.Size(255, 178);
             this.tblEditButtons.TabIndex = 5;
             // 
             // btnDelete
             // 
+            this.btnDelete.AutoSize = true;
             this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(122, 62);
             this.btnDelete.Name = "btnDelete";
@@ -297,7 +302,9 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.AutoSize = true;
             this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCancel.Location = new System.Drawing.Point(122, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(113, 53);
@@ -308,7 +315,9 @@
             // 
             // btnNew
             // 
+            this.btnNew.AutoSize = true;
             this.btnNew.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNew.Location = new System.Drawing.Point(3, 3);
             this.btnNew.Name = "btnNew";
             this.tblEditButtons.SetRowSpan(this.btnNew, 2);
@@ -322,6 +331,7 @@
             // 
             this.btnOK.BackColor = System.Drawing.SystemColors.Control;
             this.tblEditButtons.SetColumnSpan(this.btnOK, 2);
+            this.btnOK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOK.Enabled = false;
             this.btnOK.Location = new System.Drawing.Point(3, 121);
             this.btnOK.Name = "btnOK";
@@ -336,7 +346,8 @@
             this.gbServers.BackColor = System.Drawing.Color.Transparent;
             this.gbServers.Controls.Add(this.listServers);
             this.gbServers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbServers.Location = new System.Drawing.Point(3, 107);
+            this.gbServers.Location = new System.Drawing.Point(12, 107);
+            this.gbServers.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
             this.gbServers.Name = "gbServers";
             this.gbServers.Padding = new System.Windows.Forms.Padding(9);
             this.gbServers.Size = new System.Drawing.Size(949, 269);
@@ -396,7 +407,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(955, 571);
+            this.ClientSize = new System.Drawing.Size(930, 559);
             this.Controls.Add(this.tblDesign);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -414,6 +425,7 @@
             this.tblEdit.ResumeLayout(false);
             this.tblEdit.PerformLayout();
             this.tblEditFields.ResumeLayout(false);
+            this.tblEditFields.PerformLayout();
             this.gbPort.ResumeLayout(false);
             this.gbPort.PerformLayout();
             this.gbAddress.ResumeLayout(false);
@@ -421,6 +433,7 @@
             this.gbName.ResumeLayout(false);
             this.gbName.PerformLayout();
             this.tblEditButtons.ResumeLayout(false);
+            this.tblEditButtons.PerformLayout();
             this.gbServers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
