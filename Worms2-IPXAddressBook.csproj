@@ -79,9 +79,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bg.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="background.bmp" />
   </ItemGroup>
   <ItemGroup>
