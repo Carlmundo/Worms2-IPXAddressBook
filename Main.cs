@@ -395,7 +395,6 @@ namespace Worms2_IPXAddressBook
             btnDelete.Text = lang.Delete;
             btnOK.Text = lang.OK;
 
-
             try {
                 var fileLines = File.ReadAllLines(global.fileServerlist);
                 Boolean serverSet = false;
@@ -426,6 +425,13 @@ namespace Worms2_IPXAddressBook
                 rbOnline.Checked = true;
             }
 
+            loadIPXServers();
+
+            global.textBoxes = new TextBox[] { tbName, tbAddress, tbPort };
+            global.soundReady = true;
+        }
+        private void loadIPXServers()
+        {
             if (listServers.Items.Count == 0) {
                 listAdd(new string[] { "333networks (Backup)", "dark1.333networks.com", "3000", "1" });
                 listAdd(new string[] { "HigHog", "games.highog.com", "10000", "" });
@@ -435,26 +441,24 @@ namespace Worms2_IPXAddressBook
                 }
             }
             else {
-                string checkAddress = global.key.GetValue("dosbox_server_addr").ToString();
-                string checkPort = global.key.GetValue("dosbox_server_port").ToString();
-                //If an enabled server is found in file
-                if (global.selectedAddress.Length > 0 && global.selectedPort.Length > 0) {
-                    //Set the enabled server in registry if it is not set there
-                    if (checkAddress != global.selectedAddress || checkPort != global.selectedPort) {
-                        saveRegChanges();
+                if (rbOnline.Checked) {
+                    string checkAddress = global.key.GetValue("dosbox_server_addr").ToString();
+                    string checkPort = global.key.GetValue("dosbox_server_port").ToString();
+                    //If an enabled server is found in file
+                    if (global.selectedAddress.Length > 0 && global.selectedPort.Length > 0) {
+                        //Set the enabled server in registry if it is not set there
+                        if (checkAddress != global.selectedAddress || checkPort != global.selectedPort) {
+                            saveRegChanges();
+                        }
                     }
-                }
-                else {
-                    setTopServer();
+                    else {
+                        setTopServer();
+                    }
                 }
             }
             listServers.Columns[2].Width = -2;
             listServers.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
-
-            global.textBoxes = new TextBox[] { tbName, tbAddress, tbPort };
-            global.soundReady = true;
         }
-
         private void btnSet_Click(object sender, EventArgs e)
         {
             if (listServers.SelectedItems.Count > 0) {
@@ -538,7 +542,8 @@ namespace Worms2_IPXAddressBook
                     catch { }
                 }
                 global.key.SetValue("use_pcap", 2, RegistryValueKind.DWord);
-            } 
+            }
+            loadIPXServers();
         }
         
         private void btnExit_Click(object sender, EventArgs e)
@@ -634,6 +639,11 @@ namespace Worms2_IPXAddressBook
                 selectedItem.SubItems[2].Text = tbPort.Text;
 
                 saveFile();
+                if (selectedItem.SubItems[3].Text == global.charEnabled) {
+                    global.selectedAddress = tbAddress.Text;
+                    global.selectedPort = tbPort.Text;
+                    saveRegChanges();
+                }
             }
             else if (btnOK.Text == lang.Done) {
                 listAdd(new string[] { tbName.Text, tbAddress.Text, tbPort.Text, "" });
