@@ -26,7 +26,7 @@ namespace Worms2_IPXAddressBook
         {
             public static string fileServerlist = "Teams\\IPX.dat";
             public static string fileIPXini = "ipxwrapper.ini";
-            public static string charEnabled = "✓";
+            public static string charEnabled = "X";
             public static int selectedMode;
             public static string selectedAddress = "";
             public static string selectedPort = "";
