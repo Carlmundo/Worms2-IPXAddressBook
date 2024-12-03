@@ -473,7 +473,7 @@ namespace Worms2_IPXAddressBook
         {
             if (listServers.Items.Count == 0) {
                 listAdd(new string[] { "Frag-Net", "master.frag-net.com", "10000", "1" });
-                listAdd(new string[] { "333networks (Backup)", "dark1.333networks.com", "3000", "" });
+                listAdd(new string[] { "333networks (Backup)", "worms2.haxbyte.org", "3000", "" });
                 if (rbOnline.Checked) {
                     saveFileAddresses();
                     saveFileIPXini(true);
