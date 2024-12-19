@@ -149,7 +149,7 @@ namespace Worms2_IPXAddressBook
         {
             //Check Language
             string langFile = "language.txt";
-            string[] langArr = { "de", "en", "es", "es-419", "fr", "it", "nl", "pl", "pt", "pt-br", "ru", "sv" };
+            string[] langArr = { "cs", "de", "en", "es", "es-419", "fr", "it", "nl", "pl", "pt", "pt-br", "ru", "sv" };
             string langVal;
             if (File.Exists(langFile)) {
                 langVal = File.ReadAllText(langFile).Trim();
@@ -162,6 +162,28 @@ namespace Worms2_IPXAddressBook
             }
            
             switch (langVal) {
+                case "cs":
+                    //Credit: Jindra Petřík
+                    lang.PlayOnline = "Hrát online";
+                    lang.PlayLAN = "Hrát přes LAN nebo VPN";
+                    lang.SelectServer = "Vybrat server";
+                    lang.Restart = "Pro provedení změn prosím restartuj hru.";
+                    lang.Port = "Port";
+                    lang.AddressBook = "Adresář";
+                    lang.ServerList = "Seznam serverů";
+                    lang.New = "Nový";
+                    lang.Delete = "Odstranit";
+                    lang.Cancel = "Storno";
+                    lang.Exit = "Ukončit";
+                    lang.Name = "Název";
+                    lang.Server = "Server";
+                    lang.Address = "Adresa";
+                    lang.PortNumber = "Číslo portu";
+                    lang.Done = "Hotovo";
+                    lang.Update = "Aktualizovat";
+                    lang.OK = "OK";
+                    lang.AreYouSure = "Myslíš to vážně?";
+                    break;
                 case "de":
                     lang.PlayOnline = "Online spielen"; //Play Online
                     lang.PlayLAN = "LAN/VPN"; //Play LAN/VPN
