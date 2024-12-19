@@ -163,7 +163,7 @@ namespace Worms2_IPXAddressBook
            
             switch (langVal) {
                 case "cs":
-                    //Credit: Jindra Petřík
+                    //Credit: JPEXS
                     lang.PlayOnline = "Hrát online";
                     lang.PlayLAN = "Hrát přes LAN nebo VPN";
                     lang.SelectServer = "Vybrat server";
